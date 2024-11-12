@@ -187,7 +187,7 @@
 <!-- Proxy List -->
 <div id="proxyListContainer">
     <h3>Available Proxies (proxy added 12.11.2024)</h3>
-    <h3>The relevant proxy links are automatically copied when clicked.</h3>
+    <h3>Just copy and open in a new tab!.</h3>
     <!-- Rammerhead Proxy Links -->
     <p class="proxy-link" onclick="copyToClipboard('https://blooketcom.burgerbar.cl/')">https://blooketcom.burgerbar.cl/</p>
     <p class="proxy-link" onclick="copyToClipboard('https://milbong.burgerbar.cl/')">https://milbong.burgerbar.cl/</p>
