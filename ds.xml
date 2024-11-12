@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+<ModulePrefs title="Google.com" />
+<Content type="html"><![CDATA[
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>google.com</title>
+    <style>
+        /* Full-screen background styling */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: url('https://cdn.jsdelivr.net/gh/v-classroom-googl/oyyo@main/rob.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Loading screen styling */
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1d1d1d;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        #loadingBarContainer {
+            width: 60%;
+            height: 12px;
+            background-color: #333333;
+            border-radius: 6px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        #loadingBar {
+            width: 0%;
+            height: 100%;
+            background-color: #ff0000;
+            transition: width 4s ease;
+        }
+
+        /* Logo styling */
+        #logo {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        #logo img {
+            width: 720px;
+            height: auto;
+        }
+
+        /* Notification bar styling */
+        #notificationBar {
+            background-color: #ffcc00;
+            color: #000000;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            display: none;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Login box styling */
+        #loginBox {
+            background-color: #333333;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            border: 2px solid #ff0000;
+            display: none;
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: #ff0000;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        /* Input field styling */
+        #schoolName {
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            font-size: 16px;
+            border: 2px solid #ff0000;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Button styling */
+        .btn {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #ff0000;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #cc0000;
+        }
+        .disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+
+        /* Proxy list container styling */
+        #proxyListContainer {
+            background-color: #333333;
+            color: #ffffff;
+            width: 700px;
+            max-height: 280px;
+            overflow-y: auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        /* Proxy link styling */
+        .proxy-link {
+            color: #ffcc00;
+            cursor: pointer;
+            padding: 5px 0;
+            font-size: 16px;
+            word-wrap: break-word;
+        }
+        .proxy-link:hover {
+            color: #ff8800;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading screen -->
+    <div id="loadingScreen">
+        <div>Loading...</div>
+        <div id="loadingBarContainer">
+            <div id="loadingBar"></div>
+        </div>
+    </div>
+
+    <!-- Logo -->
+    <div id="logo">
+        <img src="https://cdn.jsdelivr.net/gh/v-classroom-googl/oyyo@main/robx.png" alt="School Logo">
+    </div>
+
+    <!-- Login box -->
+    <div id="loginBox">
+        <h2>Enter Your School Name</h2>
+        <p class="error-message" id="errorMessage">Try a little more magic in your school name!</p>
+        <input type="password" id="schoolName" placeholder="Enter your school name" />
+        <button id="loginBtn" class="btn active" onclick="checkSchoolName()">Submit</button>
+    </div>
+
+    <!-- Game Buttons -->
+    <div id="buttons" style="display: none;">
+        <div id="notificationBar">
+            proxy added 12.11.2024
+        </div>
+        <button class="btn active" onclick="openGame('https://classroom-opensocial.googleusercontent.com/gadgets/ifr?url=https://274079163-174037128449362058.preview.editmysite.com/uploads/b/139890129-899796311729593176/files/rtbl.xml&container=ig')">Game 1 R</button>
+        <button class="btn active" onclick="openGame('https://classroom-opensocial.googleusercontent.com/gadgets/ifr?url=https://275022854-836183720046385513.preview.editmysite.com/uploads/b/139890129-376454683626216828/files/rec.xml&container=ig')">Game 2</button>
+        <button class="btn active" onclick="openGame('https://classroom-opensocial.googleusercontent.com/gadgets/ifr?url=https://276004251-163805371142805694.preview.editmysite.com/uploads/b/139890129-630426005846085079/files/sf.xml&container=ig')">Game 3</button>
+        <button class="btn active" onclick="openGame('https://classroom-opensocial.googleusercontent.com/gadgets/ifr?url=https://471904738-852049328537117493.preview.editmysite.com/uploads/b/139890129-154348492386095606/files/ssee.xml&container=ig')">Game 4 S</button>
+        <button class="btn active" onclick="openGame('https://classroom-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/scvholar-classroom/6464dd@main/s.xml&container=ig')">Game 5 new</button>
+
+<!-- Proxy List -->
+<div id="proxyListContainer">
+    <h3>Available Proxies (proxy added 12.11.2024)</h3>
+    <h3>The relevant proxy links are automatically copied when clicked.</h3>
+    <!-- Rammerhead Proxy Links -->
+    <p class="proxy-link" onclick="copyToClipboard('https://blooketcom.burgerbar.cl/')">https://blooketcom.burgerbar.cl/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://milbong.burgerbar.cl/')">https://milbong.burgerbar.cl/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://adfree-games-at.geometry-games.online/')">https://adfree-games-at.geometry-games.online/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://unblocked-games-at.geometry-games.online/')">https://unblocked-games-at.geometry-games.online/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://shameless-plug-for.geometry-games.online/')">https://shameless-plug-for.geometry-games.online/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://play-games-at.geometry-games.online/')">https://play-games-at.geometry-games.online/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://rammerhead.geometry-games.online/')">https://rammerhead.geometry-games.online/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://browser.geometry-games.online/')">https://browser.geometry-games.online/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://im-in-the-thick-of-it-everybody-knows.dynorex.com/')">https://im-in-the-thick-of-it-everybody-knows.dynorex.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://youve-arived-to.walzone.com/')">https://youve-arived-to.walzone.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://burger.burgerman.burgerbar.cl/')">https://burger.burgerman.burgerbar.cl/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://furriesarecute.furryplace.eu/')">https://furriesarecute.furryplace.eu/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://cometobigzaddy.rustyoptical.com/')">https://cometobigzaddy.rustyoptical.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://i-will-stealillegaly.ilovestealingfromworkanddoingdrugs.com/')">https://i-will-stealillegaly.ilovestealingfromworkanddoingdrugs.com/</p>
+
+    <!-- Doge Proxy Links -->
+    <p class="proxy-link" onclick="copyToClipboard('https://hms.nya.pub/')">https://hms.nya.pub/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://hms.fr.to/')">https://hms.fr.to/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://hms.1337.cx/')">https://hms.1337.cx/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://i-like-my-cheese-mouldy.bruh.poptour.com.ar/')">https://i-like-my-cheese-mouldy.bruh.poptour.com.ar/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://lordbord.mathewparkins.com/')">https://lordbord.mathewparkins.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://lol.mathewparkin.com/')">https://lol.mathewparkin.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://thick-of-it.kakuaa.com/')">https://thick-of-it.kakuaa.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://zopz_is_an_op.infe.com.br')">https://zopz_is_an_op.infe.com.br</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://entersphere-oupo315g.b4a.run/')">https://entersphere-oupo315g.b4a.run/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://tv.globalwireandcable.com/')">https://tv.globalwireandcable.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://scienceisveryfun.jlengineering.se/')">https://scienceisveryfun.jlengineering.se/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://sometimesweneed.jlengineering.se/')">https://sometimesweneed.jlengineering.se/</p>
+
+    <!-- Shuttle Proxy Links -->
+    <p class="proxy-link" onclick="copyToClipboard('https://shuttle-nirbytesv1.vercel.app/')">https://shuttle-nirbytesv1.vercel.app/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://snirbshuttle56.vercel.app/')">https://snirbshuttle56.vercel.app/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://hellothisiscooldamg22.vercel.app/')">https://hellothisiscooldamg22.vercel.app/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://myshuttlevipusers343243.vercel.app/')">https://myshuttlevipusers343243.vercel.app/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://myshuttlevxxx4545.vercel.app/')">https://myshuttlevxxx4545.vercel.app/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://beekamanibynirbytes234savylae.vercel.app/')">https://beekamanibynirbytes234savylae.vercel.app/</p>
+
+    <!-- Interstellar Proxy Links -->
+    <p class="proxy-link" onclick="copyToClipboard('https://iwilltakeyourcomputerandyouwill.loseyourip.com/')">https://iwilltakeyourcomputerandyouwill.loseyourip.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://boba.qwerty.com.ar/')">https://boba.qwerty.com.ar/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://ethanthecoperguy.stofcheck-ballinger.com/')">https://ethanthecoperguy.stofcheck-ballinger.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://grade.l5.ca/')">https://grade.l5.ca/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://neal.is-very.fun/')">https://neal.is-very.fun/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://notapr0xy.com/')">https://notapr0xy.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://robbyisfat.vercel.app/')">https://robbyisfat.vercel.app/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://realshadow.vercel.app/')">https://realshadow.vercel.app/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://serarchupchessdevmusicongoogle.vercel.app/')">https://serarchupchessdevmusicongoogle.vercel.app/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://archmcsucksfrrr.vercel.app/')">https://archmcsucksfrrr.vercel.app/</p>
+
+    <!-- Rammerhead Unblocker Links -->
+    <p class="proxy-link" onclick="copyToClipboard('https://ivesisgood.bad.mn/')">https://ivesisgood.bad.mn/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://fbisd.happyrobotics.com/')">https://fbisd.happyrobotics.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://ikerelpapu12.awiki.org/')">https://ikerelpapu12.awiki.org/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://brandangoodboy.norushcharge.com/')">https://brandangoodboy.norushcharge.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://wheremyhundred.norushcharge.com/')">https://wheremyhundred.norushcharge.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://twitter.4wardfabrications.com/')">https://twitter.4wardfabrications.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://fbisd.hmail.us/')">https://fbisd.hmail.us/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://dingdongeatitup.eatitwellandmixitup.newpowergroup.com/')">https://dingdongeatitup.eatitwellandmixitup.newpowergroup.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://noice.newpowergroup.com/')">https://noice.newpowergroup.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://ogsigloo.what2no.com/')">https://ogsigloo.what2no.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://clark-likes-to-eat-food-or-snacks.ftp.sh/')">https://clark-likes-to-eat-food-or-snacks.ftp.sh/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://abouttheriver.potomacriversafetycommittee.org/')">https://abouttheriver.potomacriversafetycommittee.org/</p>
+
+    <!-- Doge Unblocker Links -->
+    <p class="proxy-link" onclick="copyToClipboard('https://nirbdoge.kalbas.com.vn/')">https://nirbdoge.kalbas.com.vn/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://saugatmagarprx.chickenkiller.com/')">https://saugatmagarprx.chickenkiller.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://mirakdog.mooo.com/')">https://mirakdog.mooo.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://proxnirbytesdoge.strangled.net/')">https://proxnirbytesdoge.strangled.net/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://janiman5x.thehomeserver.net/')">https://janiman5x.thehomeserver.net/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://nirbytesub.twilightparadox.com/')">https://nirbytesub.twilightparadox.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://nirbytes123.chickenkiller.com/')">https://nirbytes123.chickenkiller.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://surfdoge.pro/')">https://surfdoge.pro/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://saugat.chickenkiller.com/')">https://saugat.chickenkiller.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://nambpro.ignorelist.com/')">https://nambpro.ignorelist.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://betamaki.jumpingcrab.com/')">https://betamaki.jumpingcrab.com/</p>
+
+    <!-- Interstellar Proxy Links -->
+    <p class="proxy-link" onclick="copyToClipboard('https://ethanthecoperguy.stofcheck-ballinger.com/')">https://ethanthecoperguy.stofcheck-ballinger.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://grade.l5.ca/')">https://grade.l5.ca/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://neal.is-very.fun/')">https://neal.is-very.fun/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://stars-delta.us.to/')">https://stars-delta.us.to/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://mrduggeris.verymad.net/')">https://mrduggeris.verymad.net/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://thisforjaydenyoubetterfixmychromebookthiswensday.cstang.hk/')">https://thisforjaydenyoubetterfixmychromebookthiswensday.cstang.hk/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://donut-drink.b33r.us/')">https://donut-drink.b33r.us/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://bob-is-him.ooj.cz/')">https://bob-is-him.ooj.cz/</p>
+
+    <!-- Additional Interstellar and Rammerhead Links -->
+    <p class="proxy-link" onclick="copyToClipboard('https://new-kid-song-thick-of-it-is-azz.coola.tw/')">https://new-kid-song-thick-of-it-is-azz.coola.tw/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://ima-compare-deez-nuts.coola.tw/')">https://ima-compare-deez-nuts.coola.tw/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://lunchy-morelike-idunnoicantmakeagoodjoke.coola.tw/')">https://lunchy-morelike-idunnoicantmakeagoodjoke.coola.tw/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://bangdidlol.farted.net/')">https://bangdidlol.farted.net/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://etonthegoat.justminers.com/')">https://etonthegoat.justminers.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://skib.shogivaldivia.cl/')">https://skib.shogivaldivia.cl/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://proxy.hardsoft.nu/')">https://proxy.hardsoft.nu/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://wiyiyos.random-domain.org/')">https://wiyiyos.random-domain.org/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://agoodname2.hbmc.net/')">https://agoodname2.hbmc.net/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://alexisacooldudeandiwannakisshimbad12.showmyhomes.com/')">https://alexisacooldudeandiwannakisshimbad12.showmyhomes.com/</p>
+
+    <!-- Final Doge Proxy Links -->
+    <p class="proxy-link" onclick="copyToClipboard('https://nirbytesub.twilightparadox.com/')">https://nirbytesub.twilightparadox.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://nirbytes123.chickenkiller.com/')">https://nirbytes123.chickenkiller.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://saugat.chickenkiller.com/')">https://saugat.chickenkiller.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://nambpro.ignorelist.com/')">https://nambpro.ignorelist.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://betamaki.jumpingcrab.com/')">https://betamaki.jumpingcrab.com/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://explanation-of-the-organism-didyoumissreadthat.585.eu/')">https://explanation-of-the-organism-didyoumissreadthat.585.eu/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://in-honor-of-my-abusive-uncle.cissp.or.id/')">https://in-honor-of-my-abusive-uncle.cissp.or.id/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://apw.about.ipv64.net/')">https://apw.about.ipv64.net/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://diddyismymentor.cissp.or.id/')">https://diddyismymentor.cissp.or.id/</p>
+    <p class="proxy-link" onclick="copyToClipboard('https://brody-get-tf-off-mc.digitalforest.my/')">https://brody-get-tf-off-mc.digitalforest.my/</p>
+
+</div>
+
+
+<script>
+    // Loading screen simulation
+    window.onload = function() {
+        const loadingScreen = document.getElementById('loadingScreen');
+        const loadingBar = document.getElementById('loadingBar');
+        const loginBox = document.getElementById('loginBox');
+
+        loadingBar.style.width = '100%';
+
+        setTimeout(() => {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+                loginBox.style.display = 'block';
+            }, 500);
+        }, 4000);
+    };
+
+    // School name validation with error message
+    function checkSchoolName() {
+        const schoolName = document.getElementById('schoolName').value.trim();
+        const errorMessage = document.getElementById('errorMessage');
+        const wordCount = schoolName.split(/\s+/).length;
+
+        if (wordCount >= 2) {
+            document.getElementById('loginBox').style.display = 'none';
+            document.getElementById('notificationBar').style.display = 'block';
+            document.getElementById('buttons').style.display = 'block';
+            errorMessage.style.display = 'none';
+        } else {
+            errorMessage.style.display = 'block';
+        }
+    }
+
+    // Function to open games
+    function openGame(gameUrl) {
+        const popup = window.open('about:blank', '_blank', 'width=' + screen.width + ',height=' + screen.height + ',left=0,top=0');
+        popup.document.write(`
+            <html>
+                <head>
+                    <title>Game Window</title>
+                    <style>
+                        body, html { margin: 0; padding: 0; width: 100vw; height: 100vh; overflow: hidden; }
+                        iframe { width: 100vw; height: 100vh; border: none; }
+                    </style>
+                </head>
+                <body>
+                    <iframe src="${gameUrl}" allowfullscreen></iframe>
+                </body>
+            </html>
+        `);
+        popup.document.close();
+        popup.moveTo(0, 0);
+        popup.resizeTo(screen.width, screen.height);
+    }
+
+    // Function to copy proxy links
+    function copyToClipboard(link) {
+        navigator.clipboard.writeText(link).then(() => {
+            alert('Link copied to clipboard: ' + link);
+        });
+    }
+</script>
+
+</body>
+</html>
+
+
+
+]]></Content>
+</Module>
