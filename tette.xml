@@ -66,14 +66,14 @@
         position: absolute;
         top: 10%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translateX(-50%);
         text-align: center;
-        max-width: 80%;
+        max-width: 90%;
     }
 
     #logo img {
         width: 100%;
-        max-width: 720px;
+        max-width: 500px;
         height: auto;
     }
 
@@ -97,7 +97,7 @@
         padding: 20px;
         border-radius: 8px;
         text-align: center;
-        width: 80%;
+        width: 90%;
         max-width: 300px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         color: #ffffff;
@@ -128,7 +128,7 @@
     .btn {
         width: 100%;
         padding: 10px;
-        margin: 10px 0;
+        margin: 5px 0;
         font-size: 16px;
         cursor: pointer;
         border: none;
@@ -138,9 +138,11 @@
         background-color: #ff0000;
         transition: background-color 0.3s ease;
     }
+
     .btn:hover {
         background-color: #cc0000;
     }
+
     .disabled {
         background-color: gray;
         cursor: not-allowed;
@@ -166,9 +168,10 @@
         color: #ffcc00;
         cursor: pointer;
         padding: 5px 0;
-        font-size: 16px;
+        font-size: 14px;
         word-wrap: break-word;
     }
+
     .proxy-link:hover {
         color: #ff8800;
     }
@@ -176,7 +179,7 @@
     /* Responsive adjustments */
     @media (max-width: 768px) {
         #loginBox, .btn, #notificationBar, #proxyListContainer {
-            width: 90%;
+            width: 100%;
         }
 
         .btn {
@@ -214,6 +217,7 @@
     }
 </style>
 
+
 </head>
 <body>
 
@@ -241,7 +245,7 @@
     <!-- Game Buttons -->
     <div id="buttons" style="display: none;">
         <div id="notificationBar">
-            proxy added 12.11.2024
+            When we resolve the related proxy issue, we will notify everyone on the site in the form of a WARNING.
         </div>
         <button class="btn active" onclick="openGame('https://classroom-opensocial.googleusercontent.com/gadgets/ifr?url=https://274079163-174037128449362058.preview.editmysite.com/uploads/b/139890129-899796311729593176/files/rtbl.xml&container=ig')">Game 1 R</button>
         <button class="btn active" onclick="openGame('https://classroom-opensocial.googleusercontent.com/gadgets/ifr?url=https://275022854-836183720046385513.preview.editmysite.com/uploads/b/139890129-376454683626216828/files/rec.xml&container=ig')">Game 2</button>
@@ -433,6 +437,7 @@
 
 </body>
 </html>
+
 
 
 
