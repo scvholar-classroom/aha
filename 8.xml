@@ -9,151 +9,211 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>google.com</title>
-    <style>
-        /* Full-screen background styling */
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif;
-            background: url('https://cdn.jsdelivr.net/gh/v-classroom-googl/oyyo@main/rob.jpg') no-repeat center center fixed;
-            background-size: cover;
-            position: relative;
+<style>
+    /* Full-screen background styling */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        background: url('https://cdn.jsdelivr.net/gh/v-classroom-googl/oyyo@main/rob.jpg') no-repeat center center fixed;
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Loading screen styling */
+    #loadingScreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #1d1d1d;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: bold;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+    }
+
+    #loadingBarContainer {
+        width: 60%;
+        max-width: 400px;
+        height: 12px;
+        background-color: #333333;
+        border-radius: 6px;
+        margin-top: 20px;
+        overflow: hidden;
+    }
+
+    #loadingBar {
+        width: 0%;
+        height: 100%;
+        background-color: #ff0000;
+        transition: width 4s ease;
+    }
+
+    /* Logo styling */
+    #logo {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        max-width: 80%;
+    }
+
+    #logo img {
+        width: 100%;
+        max-width: 720px;
+        height: auto;
+    }
+
+    /* Notification bar styling */
+    #notificationBar {
+        background-color: #ffcc00;
+        color: #000000;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        display: none;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Login box styling */
+    #loginBox {
+        background-color: #333333;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        width: 80%;
+        max-width: 300px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        color: #ffffff;
+        border: 2px solid #ff0000;
+        display: none;
+    }
+
+    /* Error message styling */
+    .error-message {
+        color: #ff0000;
+        font-size: 14px;
+        margin-bottom: 10px;
+        display: none;
+    }
+
+    /* Input field styling */
+    #schoolName {
+        width: 100%;
+        padding: 10px;
+        margin: 15px 0;
+        font-size: 16px;
+        border: 2px solid #ff0000;
+        border-radius: 4px;
+        text-align: center;
+    }
+
+    /* Button styling */
+    .btn {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        color: #ffffff;
+        background-color: #ff0000;
+        transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+        background-color: #cc0000;
+    }
+    .disabled {
+        background-color: gray;
+        cursor: not-allowed;
+    }
+
+    /* Proxy list container styling */
+    #proxyListContainer {
+        background-color: #333333;
+        color: #ffffff;
+        width: 90%;
+        max-width: 700px;
+        max-height: 280px;
+        overflow-y: auto;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        text-align: left;
+        margin-top: 20px;
+    }
+
+    /* Proxy link styling */
+    .proxy-link {
+        color: #ffcc00;
+        cursor: pointer;
+        padding: 5px 0;
+        font-size: 16px;
+        word-wrap: break-word;
+    }
+    .proxy-link:hover {
+        color: #ff8800;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        #loginBox, .btn, #notificationBar, #proxyListContainer {
+            width: 90%;
         }
 
-        /* Loading screen styling */
-        #loadingScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #1d1d1d;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #ffffff;
-            font-size: 24px;
-            font-weight: bold;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
+        .btn {
+            font-size: 14px;
+            padding: 8px;
+        }
+
+        #proxyListContainer {
+            max-height: 200px;
+            font-size: 14px;
+        }
+
+        #logo {
+            top: 8%;
         }
 
         #loadingBarContainer {
-            width: 60%;
-            height: 12px;
-            background-color: #333333;
-            border-radius: 6px;
-            margin-top: 20px;
-            overflow: hidden;
+            width: 80%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #loadingScreen {
+            font-size: 18px;
         }
 
-        #loadingBar {
-            width: 0%;
-            height: 100%;
-            background-color: #ff0000;
-            transition: width 4s ease;
-        }
-
-
-        /* Notification bar styling */
-        #notificationBar {
-            background-color: #ffcc00;
-            color: #000000;
-            font-weight: bold;
-            text-align: center;
-            padding: 10px;
-            margin-bottom: 10px;
-            font-size: 16px;
-            display: none;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        /* Login box styling */
-        #loginBox {
-            background-color: #333333;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            width: 300px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            color: #ffffff;
-            border: 2px solid #ff0000;
-            display: none;
-        }
-
-        /* Error message styling */
-        .error-message {
-            color: #ff0000;
-            font-size: 14px;
-            margin-bottom: 10px;
-            display: none;
-        }
-
-        /* Input field styling */
-        #schoolName {
-            width: 100%;
-            padding: 10px;
-            margin: 15px 0;
-            font-size: 16px;
-            border: 2px solid #ff0000;
-            border-radius: 4px;
-            text-align: center;
-        }
-
-        /* Button styling */
-        .btn {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            color: #ffffff;
-            background-color: #ff0000;
-            transition: background-color 0.3s ease;
-        }
-        .btn:hover {
-            background-color: #cc0000;
-        }
-        .disabled {
-            background-color: gray;
-            cursor: not-allowed;
-        }
-
-        /* Proxy list container styling */
         #proxyListContainer {
-            background-color: #333333;
-            color: #ffffff;
-            width: 700px;
-            max-height: 280px;
-            overflow-y: auto;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            text-align: left;
-            margin-top: 20px;
+            max-height: 150px;
+            font-size: 12px;
         }
+        
+        .btn {
+            font-size: 12px;
+        }
+    }
+</style>
 
-        /* Proxy link styling */
-        .proxy-link {
-            color: #ffcc00;
-            cursor: pointer;
-            padding: 5px 0;
-            font-size: 16px;
-            word-wrap: break-word;
-        }
-        .proxy-link:hover {
-            color: #ff8800;
-        }
-    </style>
 </head>
 <body>
 
@@ -163,6 +223,11 @@
         <div id="loadingBarContainer">
             <div id="loadingBar"></div>
         </div>
+    </div>
+
+    <!-- Logo -->
+    <div id="logo">
+        <img src="https://cdn.jsdelivr.net/gh/v-classroom-googl/oyyo@main/robx.png" alt="School Logo">
     </div>
 
     <!-- Login box -->
@@ -187,7 +252,7 @@
 <!-- Proxy List -->
 <div id="proxyListContainer">
     <h3>Available Proxies (proxy added 12.11.2024)</h3>
-    <h3>Just copy and open in a new tab!.</h3>
+    <h3>The relevant proxy links are automatically copied when clicked.</h3>
     <!-- Rammerhead Proxy Links -->
     <p class="proxy-link" onclick="copyToClipboard('https://blooketcom.burgerbar.cl/')">https://blooketcom.burgerbar.cl/</p>
     <p class="proxy-link" onclick="copyToClipboard('https://milbong.burgerbar.cl/')">https://milbong.burgerbar.cl/</p>
@@ -342,7 +407,7 @@
         popup.document.write(`
             <html>
                 <head>
-                    <title>Game Window</title>
+                    <title>google.com</title>
                     <style>
                         body, html { margin: 0; padding: 0; width: 100vw; height: 100vh; overflow: hidden; }
                         iframe { width: 100vw; height: 100vh; border: none; }
@@ -368,6 +433,7 @@
 
 </body>
 </html>
+
 
 
 
