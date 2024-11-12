@@ -61,22 +61,6 @@
         transition: width 4s ease;
     }
 
-    /* Logo styling */
-    #logo {
-        position: absolute;
-        top: 10%;
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-        max-width: 90%;
-    }
-
-    #logo img {
-        width: 100%;
-        max-width: 500px;
-        height: auto;
-    }
-
     /* Notification bar styling */
     #notificationBar {
         background-color: #ffcc00;
@@ -227,11 +211,6 @@
         <div id="loadingBarContainer">
             <div id="loadingBar"></div>
         </div>
-    </div>
-
-    <!-- Logo -->
-    <div id="logo">
-        <img src="https://cdn.jsdelivr.net/gh/v-classroom-googl/oyyo@main/robx.png" alt="School Logo">
     </div>
 
     <!-- Login box -->
