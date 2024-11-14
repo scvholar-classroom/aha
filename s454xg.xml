@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+<ModulePrefs title="Google.com" />
+<Content type="html"><![CDATA[
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>google.com</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #container {
+      width: 100%;
+      height: 100%;
+    }
+    #fr {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <iframe id="fr" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    // URL'yi base64 ile şifrelenmiş halde saklayarak gizleme
+    const encodedUrl = "aHR0cHM6Ly9hbmZvei5vcmcv"; // anfoz.org base64 şifrelenmiş hali
+
+    function decodeBase64(encoded) {
+      return decodeURIComponent(atob(encoded).split('').map(c => 
+        '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+      ).join(''));
+    }
+
+    // iFrame'e gizlenmiş URL'yi yükleme
+    document.getElementById("fr").src = decodeBase64(encodedUrl);
+  </script>
+</body>
+</html>
+
+
+
+
+]]></Content>
+</Module>
